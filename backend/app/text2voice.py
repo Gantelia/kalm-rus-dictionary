@@ -1,5 +1,3 @@
-#  file name  text2voice.py
-
 import torch
 import torchaudio
 from pathlib import Path
@@ -10,7 +8,7 @@ def text_to_voice(text: str, is_man: bool = True) -> str:
     filepath = Path('voices') / Path(filename)
     if filepath.exists():
         return filename
-    device = 'cpu'
+    device = torch.device('cpu')
     local_file = 'v3_xal.pt'
     sample_rate = 48000
     if is_man:
