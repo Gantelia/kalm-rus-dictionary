@@ -3,21 +3,22 @@ import torchaudio
 from pathlib import Path
 import hashlib
 
-def text_to_voice(text: str, is_man: bool = True) -> str:
+
+def text_to_voice(package, text: str, is_man: bool = True) -> str:
     filename = hashlib.md5(text.encode()).hexdigest() + ".wav"
-    filepath = Path('voices') / Path(filename)
+    filepath = Path(__file__).parent.absolute() / Path('voices') / Path(filename)
     if filepath.exists():
         return filename
     device = torch.device('cpu')
-    local_file = 'v3_xal.pt'
+    #local_file = Path(__file__).parent.absolute() / Path('v3_xal.pt')
     sample_rate = 48000
     if is_man:
         speaker = 'erdni'
     else:
         speaker = 'delghir'
-    model = torch.package.PackageImporter(local_file).load_pickle("tts_models", "model")
+    #model = torch.package.PackageImporter(local_file).load_pickle("tts_models", "model")
+    model = package['t2v_model']
     model.to(device)
-
     audio = model.apply_tts(text=text,
                             speaker=speaker,
                             sample_rate=sample_rate)

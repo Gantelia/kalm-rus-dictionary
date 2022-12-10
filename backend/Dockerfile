@@ -1,4 +1,4 @@
-FROM tiangolo/uvicorn-gunicorn:python3.9
+FROM tiangolo/uvicorn-gunicorn:python3.10
 
 
 # Turns off buffering for easier container logging
@@ -6,7 +6,12 @@ FROM tiangolo/uvicorn-gunicorn:python3.9
 
 # Install pip requirements
 COPY requirements.txt .
-RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+COPY packages.txt .
+
+RUN apt-get update
+RUN xargs -a packages.txt apt-get install --yes
+RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt 
+
 
 COPY ./app /app
 
