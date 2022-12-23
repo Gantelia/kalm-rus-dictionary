@@ -1,13 +1,13 @@
 from text2voice import text_to_voice
 from voice2text import voice_to_text
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File
 from fastapi.staticfiles import StaticFiles
 from starlette.responses import FileResponse
 from pathlib import Path
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from transformers import AutoProcessor, AutoModelForCTC
-import torch
+import torch, io
 
 app = FastAPI()
 
@@ -50,8 +50,8 @@ async def get_text_to_voice(data: Data):
     return {"filename": filename}
 
 @app.post("/voice2text")
-async def convert_text_from_voice(audio: Audio):
-    text = voice_to_text(audio.file_path, app.package)
+async def convert_text_from_voice(file: UploadFile):
+    text = voice_to_text(file.filename, app.package)
     return {"text": text}
 
 @app.get("/text2voice/{text}")
