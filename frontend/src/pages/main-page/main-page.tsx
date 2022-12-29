@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Synthesis from '../../components/synthesis/synthesis';
 import TabLabel from '../../components/tab-label/tab-label';
 import { Tabs } from '../../const';
 import './main-page.scss';
@@ -17,6 +18,10 @@ function MainPage() {
         <TabLabel active={activeTab} onClick={handleTabClick}>
           {Tabs.Recognition}
         </TabLabel>
+        <section className="tab-content">
+          <h2 className="visually-hidden">{activeTab}</h2>
+          {activeTab === Tabs.Synthesis && <Synthesis />}
+        </section>
       </div>
     </main>
   );
