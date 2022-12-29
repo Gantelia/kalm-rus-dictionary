@@ -1,0 +1,160 @@
+@import '../../sass/variables.scss';
+
+.app {
+  width: $app-width;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.25);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  color: #ffffff;
+  background-color: $basic-color;
+}
+
+.header {
+  padding: 56px 223px 118px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  background-color: $basic-dark-color;
+  content: '';
+  width: 200%;
+  height: 510%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  clip-path: ellipse(closest-side farthest-side);
+}
+
+.logo {
+  transform: translateY(0);
+  width: 85px;
+  height: 85px;
+  position: absolute;
+  z-index: 2;
+
+  &:hover {
+    opacity: 70%;
+  }
+
+  &:active {
+    opacity: 30%;
+  }
+}
+
+.logo__image {
+  width: 100%;
+  height: auto;
+}
+
+.header__title {
+  font-weight: 700;
+  margin: 0 auto;
+  margin-top: 4px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 48px;
+  line-height: 62px;
+  position: relative;
+  z-index: 2;
+  width: 460px;
+}
+
+.footer {
+  background-color: $basic-dark-color;
+  padding: 40px 44px 36px;
+}
+
+.footer__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.social {
+  margin-left: 2px;
+}
+
+.social__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.social__item {
+  margin: 10px 13px;
+}
+
+.social__link {
+  width: 40px;
+  height: 40px;
+  display: block;
+  position: relative;
+}
+
+.social__icon {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  fill: #ffffff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.social__link:hover .social__icon {
+  fill: $link-hover-color;
+}
+
+.social__link:active .social__icon {
+  fill: $link-active-color;
+}
+
+.navigation {
+  margin-right: 5px;
+}
+
+.navigation__list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+}
+
+.navigation__item {
+  margin-right: 23px;
+
+  &:first-child {
+    margin-left: 13px;
+  }
+}
+
+.navigation__link {
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 31px;
+
+  &:hover {
+    color: $link-hover-color;
+  }
+
+  &:active {
+    color: $link-active-color;
+  }
+}
+
+.copyright {
+  font-size: 20px;
+  line-height: 26px;
+  margin: 0;
+  margin-top: 10px;
+  text-align: center;
+}

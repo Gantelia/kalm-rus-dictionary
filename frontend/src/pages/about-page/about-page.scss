@@ -1,0 +1,9 @@
+@import '../../sass/mixins.scss';
+
+.about {
+  @include main();
+}
+
+.about__title {
+  text-align: center;
+}

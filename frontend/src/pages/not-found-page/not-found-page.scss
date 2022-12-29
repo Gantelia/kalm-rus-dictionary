@@ -1,0 +1,15 @@
+@import '../../sass/mixins.scss';
+
+.not-found {
+  @include main();
+}
+
+.not-found__title,
+.not-found__text {
+  text-align: center;
+}
+
+.not-found__text {
+  font-size: 18px;
+  line-height: 23px;
+}
