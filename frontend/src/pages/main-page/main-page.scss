@@ -3,3 +3,8 @@
 .main {
   @include main();
 }
+
+.main__container {
+  width: 655px;
+  margin: 0 auto;
+}

@@ -1,0 +1,24 @@
+@import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
+
+.tab-button {
+  @include button;
+  font-family: 'PT Mono', 'New Courier', serif;
+  font-size: 24px;
+  line-height: 24px;
+  color: #ffffff;
+  background-color: #ababab;
+  padding: 13px 30px 12px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  position: relative;
+
+  &:nth-child(2) {
+    right: 20px;
+  }
+
+  &--active {
+    z-index: 1;
+    background-color: $background-color;
+  }
+}

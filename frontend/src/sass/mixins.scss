@@ -3,3 +3,32 @@
   padding: 92px 150px 60px;
   color: #464646;
 }
+
+@mixin button() {
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  font-weight: 700;
+}
+
+@mixin primaryButton() {
+  font-size: 20px;
+  line-height: 26px;
+  width: 252px;
+  padding: 17px;
+  border-radius: 30px;
+  background-color: #7f548d;
+  color: #ffffff;
+
+  &:hover {
+    background-color: #a66bb9;
+  }
+
+  &:active {
+    background-color: #a041c1;
+  }
+
+  &[disabled] {
+    background-color: #a18fa7;
+  }
+}
