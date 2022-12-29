@@ -51,16 +51,17 @@
 }
 
 .header__title {
-  font-weight: 700;
   margin: 0 auto;
   margin-top: 4px;
   text-align: center;
   color: #ffffff;
+  font-family: 'PT Mono', 'New Courier', serif;
   font-size: 48px;
-  line-height: 62px;
+  line-height: 48px;
+  font-weight: 700;
   position: relative;
   z-index: 2;
-  width: 460px;
+  width: 634px;
 }
 
 .footer {
