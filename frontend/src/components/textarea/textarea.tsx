@@ -22,7 +22,7 @@ const Textarea = forwardRef(
           className="textarea"
           onChange={({ target }) => setInput(target.value)}
           id="text"
-          value={input}
+          value={input.substring(0, 500)}
           ref={ref}
           required
           disabled={isDisabled}

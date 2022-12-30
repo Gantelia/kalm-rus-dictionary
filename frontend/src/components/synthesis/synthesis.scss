@@ -1,6 +1,25 @@
+@import '../../sass/mixins.scss';
+
 .synthesis__container {
   display: grid;
   grid-template-columns: 252px 1fr;
-  column-gap: 10px;
+  column-gap: 33px;
   row-gap: 24px;
+  margin-bottom: 12px;
+}
+
+.synthesis__submit {
+  @include button;
+  @include primaryButton;
+}
+
+.tip {
+  margin: 0;
+  font-size: 16px;
+  line-height: 21px;
+  align-self: center;
+
+  &--error {
+    color: #ff0f0f;
+  }
 }
