@@ -23,3 +23,58 @@
     color: #ff0f0f;
   }
 }
+
+.synthesis__wrapper {
+  display: flex;
+}
+
+.synthesis__download {
+  @include button;
+  font-size: 20px;
+  line-height: 26px;
+  border-radius: 30px;
+  text-decoration: none;
+  background-color: transparent;
+  color: $basic-dark-color;
+  border: 4px solid $basic-dark-color;
+  padding: 13px 62px;
+  text-align: left;
+  position: relative;
+  width: 252px;
+  margin: 0;
+  margin-right: auto;
+
+  &:hover {
+    border-color: $button-hover-color;
+    color: $button-hover-color;
+  }
+
+  &:active {
+    border-color: $button-active-color;
+    color: $button-active-color;
+  }
+}
+
+.synthesis__download--disabled {
+  border-color: $button-disabled-color;
+  color: $button-disabled-color;
+  cursor: default;
+  pointer-events: none;
+
+  &:hover {
+    border-color: $button-disabled-color;
+    color: $button-disabled-color;
+  }
+
+  &:active {
+    border-color: $button-disabled-color;
+    color: $button-disabled-color;
+  }
+}
+
+.synthesis__download .icon {
+  fill: currentColor;
+  position: absolute;
+  top: 15px;
+  right: 66px;
+}
