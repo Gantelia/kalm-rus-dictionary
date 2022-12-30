@@ -12,8 +12,8 @@ function VoiceSelect({ isDisabled }: VoiceSelectProps) {
         aria-label="Выбор голоса"
         disabled={isDisabled}
       >
-        <option value="male">Мужской</option>
-        <option value="female">Женский</option>
+        <option value="male">Мужской голос</option>
+        <option value="female">Женский голос</option>
       </select>
     </div>
   );

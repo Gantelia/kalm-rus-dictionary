@@ -27,7 +27,10 @@ function LoadFileButton({ isDisabled, onFileLoad }: LoadFileButtonProps) {
         type="file"
         id="load-file"
         accept=".txt"
-        onClick={(evt) => (evt.currentTarget.value = '')}
+        onClick={(evt) => {
+          evt.currentTarget.value = '';
+          onFileLoad(evt.currentTarget.value);
+        }}
         onChange={(evt) => {
           handleFileLoad(evt);
         }}
