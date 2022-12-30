@@ -5,11 +5,12 @@ import './synthesis.scss';
 
 function Synthesis() {
   const [loadedText, setLoadedText] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <form className="synthesis">
       <div className="synthesis__container">
-        <LoadFileButton isDisabled={false} onFileLoad={setLoadedText} />
-        <VoiceSelect />
+        <LoadFileButton isDisabled={isLoading} onFileLoad={setLoadedText} />
+        <VoiceSelect isDisabled={isLoading} />
       </div>
     </form>
   );

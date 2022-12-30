@@ -1,6 +1,14 @@
 @import '../../sass/mixins.scss';
 
 .load-file {
-  @include button();
+  @include button;
   @include primaryButton();
+}
+
+input[type='file'][disabled] + .load-file {
+  background-color: $button-disabled-color;
+}
+
+input[type='file']:focus + .load-file {
+  outline: auto;
 }

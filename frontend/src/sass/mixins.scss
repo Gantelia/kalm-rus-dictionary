@@ -1,34 +1,36 @@
+@import './variables.scss';
+
 @mixin main {
   flex-grow: 1;
   padding: 92px 150px 60px;
   color: #464646;
 }
 
-@mixin button() {
+@mixin button {
   cursor: pointer;
   text-align: center;
   border: none;
   font-weight: 700;
 }
 
-@mixin primaryButton() {
+@mixin primaryButton($width: 252px) {
   font-size: 20px;
   line-height: 26px;
-  width: 252px;
+  width: $width;
   padding: 17px;
   border-radius: 30px;
-  background-color: #7f548d;
+  background-color: $basic-dark-color;
   color: #ffffff;
 
   &:hover {
-    background-color: #a66bb9;
+    background-color: $button-hover-color;
   }
 
   &:active {
-    background-color: #a041c1;
+    background-color: $button-active-color;
   }
 
   &[disabled] {
-    background-color: #a18fa7;
+    background-color: $button-disabled-color;
   }
 }

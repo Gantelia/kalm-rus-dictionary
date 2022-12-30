@@ -1,0 +1,36 @@
+@import '../../sass/mixins.scss';
+
+.select {
+  display: flex;
+  align-items: center;
+  width: 262px;
+  margin-left: auto;
+  align-self: right;
+  justify-content: end;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    top: 17px;
+    right: 27px;
+    background-image: url('../../images/triangle-icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+  }
+}
+
+.select-control {
+  @include button;
+  @include primaryButton(100%);
+  padding-left: 28px;
+  text-align: left;
+  appearance: none;
+}
+
+.select-control option {
+  font: inherit;
+}
