@@ -14,10 +14,7 @@
 }
 
 .tip {
-  margin: 0;
-  font-size: 16px;
-  line-height: 21px;
-  align-self: center;
+  @include tip;
 
   &--error {
     color: #ff0f0f;

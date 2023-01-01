@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Recognition from '../../components/recognition/recognition';
 import Synthesis from '../../components/synthesis/synthesis';
 import TabLabel from '../../components/tab-label/tab-label';
 import { Tabs } from '../../const';
@@ -21,6 +22,7 @@ function MainPage() {
         <section className="tab-content">
           <h2 className="visually-hidden">{activeTab}</h2>
           {activeTab === Tabs.Synthesis && <Synthesis />}
+          {activeTab === Tabs.Recognition && <Recognition />}
         </section>
       </div>
     </main>

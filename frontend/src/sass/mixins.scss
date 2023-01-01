@@ -35,3 +35,23 @@
     background-color: $button-disabled-color;
   }
 }
+
+@mixin uploadFileButton {
+  @include button;
+  @include primaryButton();
+
+  input[type='file'][disabled] + .load-file {
+    background-color: $button-disabled-color;
+  }
+
+  input[type='file']:focus + .load-file {
+    outline: auto;
+  }
+}
+
+@mixin tip {
+  margin: 0;
+  font-size: 16px;
+  line-height: 21px;
+  align-self: center;
+}

@@ -1,0 +1,68 @@
+@import '../../sass/mixins.scss';
+@import '../../sass/variables.scss';
+
+.recognition__wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.recognition__submit {
+  @include button;
+  @include primaryButton();
+}
+
+.recognition__container {
+  padding-top: 61px;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.recognition__loader {
+  @include tip;
+  position: absolute;
+  top: 20px;
+  left: 0;
+
+  &::after {
+    content: '';
+    width: 21px;
+    height: 21px;
+    background-color: transparent;
+    border: 2px solid currentColor;
+    border-top: 5px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 0;
+    margin-left: 10px;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.recognition__result {
+  width: 100%;
+  min-height: 247px;
+  background-color: $field-bg-color;
+  border-radius: 12px;
+}
+
+.recognition__download {
+  @include button;
+  @include primaryButton();
+  text-decoration: none;
+  display: block;
+
+  &--disabled {
+    cursor: default;
+    pointer-events: none;
+    background-color: $button-disabled-color;
+  }
+}

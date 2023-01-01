@@ -1,12 +1,12 @@
 import { ChangeEvent } from 'react';
-import './load-file-button.scss';
+import './upload-text-button.scss';
 
-type LoadFileButtonProps = {
+type UploadTextButtonProps = {
   isDisabled: boolean;
   onFileLoad: (text: string) => void;
 };
 
-function LoadFileButton({ isDisabled, onFileLoad }: LoadFileButtonProps) {
+function UploadTextButton({ isDisabled, onFileLoad }: UploadTextButtonProps) {
   // Читает контент из загруженного файла
   const handleFileLoad = async (evt: ChangeEvent<HTMLInputElement>) => {
     evt.preventDefault();
@@ -43,4 +43,4 @@ function LoadFileButton({ isDisabled, onFileLoad }: LoadFileButtonProps) {
   );
 }
 
-export default LoadFileButton;
+export default UploadTextButton;
