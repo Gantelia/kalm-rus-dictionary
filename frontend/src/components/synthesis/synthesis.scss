@@ -17,7 +17,7 @@
   @include tip;
 
   &--error {
-    color: #ff0f0f;
+    color: $error-color;
   }
 }
 

@@ -5,8 +5,9 @@ import Textarea from '../textarea/textarea';
 import VoiceSelect from '../voice-select/voice-select';
 import './synthesis.scss';
 import { isInputValid } from './synthesis-utils';
-import { APIRoute, VoiceType } from '../../const';
+import { APIRoute, SHOW_ERROR_TIMEOUT, VoiceType } from '../../const';
 import { api } from '../../services/services';
+import ErrorMessage from '../error-message/error-message';
 
 function Synthesis() {
   const [loadedText, setLoadedText] = useState('');
@@ -14,7 +15,7 @@ function Synthesis() {
   const [isValid, setIsValid] = useState(true);
   const [voiceFile, setVoiceFile] = useState('');
   const [fileName, setFileName] = useState('');
-  const [error, setError] = useState<unknown>('');
+  const [error, setError] = useState<unknown>(null);
 
   const handleSubmit = async (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -39,6 +40,8 @@ function Synthesis() {
       setFileName(text as string);
     } catch (error) {
       setError(error);
+      setTimeout(() => setError(null), SHOW_ERROR_TIMEOUT);
+      throw new Error(`${error}`);
     } finally {
       setIsLoading(false);
     }
@@ -57,6 +60,7 @@ function Synthesis() {
           Допустимы только буквы калмыцкого алфавита и знаки препинания
         </p>
       </div>
+      {error ? <ErrorMessage /> : null}
       <div className="synthesis__wrapper">
         <a
           className={`synthesis__download ${
