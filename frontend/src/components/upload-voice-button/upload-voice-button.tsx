@@ -18,7 +18,7 @@ function UploadVoiceButton({ isDisabled }: UploadVoiceButton) {
         }}
         disabled={isDisabled}
       />
-      <label className="load-voice-file" htmlFor="voice-file">
+      <label className="load-voice-label" htmlFor="voice-file">
         Загрузить аудиофайл
       </label>
     </>

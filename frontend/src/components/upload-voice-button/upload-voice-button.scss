@@ -1,5 +1,13 @@
 @import '../../sass/mixins.scss';
 
-.load-voice-file {
+.load-voice-label {
   @include uploadFileButton;
+}
+
+input[type='file'][disabled] ~ label {
+  background-color: $button-disabled-color;
+}
+
+input[type='file']:focus ~ label {
+  outline: auto;
 }

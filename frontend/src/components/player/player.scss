@@ -1,4 +1,8 @@
+@import '../../sass/variables.scss';
+
 .player {
   width: 333px;
   align-self: center;
+  border-radius: 30px;
+  background-color: $field-bg-color;
 }

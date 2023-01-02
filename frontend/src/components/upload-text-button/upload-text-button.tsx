@@ -36,7 +36,7 @@ function UploadTextButton({ isDisabled, onFileLoad }: UploadTextButtonProps) {
         }}
         disabled={isDisabled}
       />
-      <label className="load-file" htmlFor="load-file">
+      <label className="load-text-label" htmlFor="load-file">
         Загрузить файл
       </label>
     </>
