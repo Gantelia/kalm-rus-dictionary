@@ -8,6 +8,7 @@ import { isInputValid } from './synthesis-utils';
 import { APIRoute, SHOW_ERROR_TIMEOUT, VoiceType } from '../../const';
 import { api } from '../../services/services';
 import ErrorMessage from '../error-message/error-message';
+import Loader from '../loader/loader';
 
 function Synthesis() {
   const [loadedText, setLoadedText] = useState('');
@@ -60,9 +61,13 @@ function Synthesis() {
         >
           Синтез
         </button>
-        <p className={`tip ${!isValid ? 'tip--error' : ''}`}>
-          Допустимы только буквы калмыцкого алфавита и знаки препинания
-        </p>
+        {isLoading ? (
+          <Loader>Подождите, идет синтез</Loader>
+        ) : (
+          <p className={`tip ${!isValid ? 'tip--error' : ''}`}>
+            Допустимы только буквы калмыцкого алфавита и знаки препинания
+          </p>
+        )}
       </div>
       {error ? <ErrorMessage /> : null}
       <div className="synthesis__wrapper">

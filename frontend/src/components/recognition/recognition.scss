@@ -27,29 +27,7 @@
   position: absolute;
   top: 20px;
   left: 0;
-}
-
-.recognition__loader::after {
-  content: '';
-  width: 21px;
-  height: 21px;
-  background-color: transparent;
-  border: 2px solid currentColor;
-  border-top: 5px solid transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  position: absolute;
-  top: 0;
   margin-left: 10px;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 .recognition__result {

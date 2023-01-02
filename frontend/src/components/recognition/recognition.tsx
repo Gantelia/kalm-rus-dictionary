@@ -2,6 +2,7 @@ import { FormEvent, useState } from 'react';
 import { APIRoute, SHOW_ERROR_TIMEOUT } from '../../const';
 import { api } from '../../services/services';
 import ErrorMessage from '../error-message/error-message';
+import Loader from '../loader/loader';
 import UploadVoiceButton from '../upload-voice-button/upload-voice-button';
 import './recognition.scss';
 
@@ -62,7 +63,9 @@ function Recognition() {
       <div className="recognition__container">
         {!isValid && <p className="recognition__invalid">Файл не выбран</p>}
         {isLoading && (
-          <p className="recognition__loader">Подождите, аудио распознаётся</p>
+          <Loader className="recognition__loader">
+            Подождите, аудио распознаётся
+          </Loader>
         )}
         <div
           className="recognition__result"
