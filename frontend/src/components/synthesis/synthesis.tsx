@@ -94,7 +94,7 @@ function Synthesis() {
             />
           </svg>
         </a>
-        <Player audioUrl={voiceFile} />
+        <Player audioUrl={voiceFile || undefined} />
       </div>
     </form>
   );

@@ -1,7 +1,7 @@
 import './player.scss';
 
 type PlayerProps = {
-  audioUrl: string;
+  audioUrl?: string;
 };
 
 function Player({ audioUrl }: PlayerProps) {
