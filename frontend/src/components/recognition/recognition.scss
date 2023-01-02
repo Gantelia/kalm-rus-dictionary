@@ -14,28 +14,33 @@
 .recognition__container {
   padding-top: 61px;
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
 }
 
+.recognition__invalid {
+  color: $error-color;
+}
+
+.recognition__invalid,
 .recognition__loader {
   @include tip;
   position: absolute;
   top: 20px;
   left: 0;
+}
 
-  &::after {
-    content: '';
-    width: 21px;
-    height: 21px;
-    background-color: transparent;
-    border: 2px solid currentColor;
-    border-top: 5px solid transparent;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    position: absolute;
-    top: 0;
-    margin-left: 10px;
-  }
+.recognition__loader::after {
+  content: '';
+  width: 21px;
+  height: 21px;
+  background-color: transparent;
+  border: 2px solid currentColor;
+  border-top: 5px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 0;
+  margin-left: 10px;
 }
 
 @keyframes spin {
@@ -52,6 +57,9 @@
   min-height: 247px;
   background-color: $field-bg-color;
   border-radius: 12px;
+  padding: 12px 28px 17px 20px;
+  font-size: 20px;
+  line-height: 26px;
 }
 
 .recognition__download {

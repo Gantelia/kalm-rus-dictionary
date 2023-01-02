@@ -53,7 +53,11 @@ function Synthesis() {
         <UploadTextButton isDisabled={isLoading} onFileLoad={setLoadedText} />
         <VoiceSelect isDisabled={isLoading} />
         <Textarea fileText={loadedText} isDisabled={isLoading} />
-        <button className="synthesis__submit" type="submit">
+        <button
+          className="synthesis__submit"
+          type="submit"
+          disabled={isLoading}
+        >
           Синтез
         </button>
         <p className={`tip ${!isValid ? 'tip--error' : ''}`}>

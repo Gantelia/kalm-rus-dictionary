@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import './upload-voice-button.scss';
 
 type UploadVoiceButton = {
   isDisabled: boolean;
@@ -10,7 +10,7 @@ function UploadVoiceButton({ isDisabled }: UploadVoiceButton) {
       <input
         className="visually-hidden"
         type="file"
-        id="load-file"
+        id="voice-file"
         accept=".wav"
         name="voice-file"
         onClick={(evt) => {
@@ -18,7 +18,7 @@ function UploadVoiceButton({ isDisabled }: UploadVoiceButton) {
         }}
         disabled={isDisabled}
       />
-      <label className="load-file" htmlFor="load-file">
+      <label className="load-voice-file" htmlFor="voice-file">
         Загрузить аудиофайл
       </label>
     </>
