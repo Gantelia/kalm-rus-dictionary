@@ -1,3 +1,4 @@
+import { VoiceType } from '../../const';
 import './voice-select.scss';
 
 type VoiceSelectProps = {
@@ -11,9 +12,10 @@ function VoiceSelect({ isDisabled }: VoiceSelectProps) {
         className="select-control"
         aria-label="Выбор голоса"
         disabled={isDisabled}
+        name="voice"
       >
-        <option value="male">Мужской голос</option>
-        <option value="female">Женский голос</option>
+        <option value={VoiceType.Male}>Мужской голос</option>
+        <option value={VoiceType.Female}>Женский голос</option>
       </select>
     </div>
   );

@@ -1,23 +1,55 @@
-import { useRef, useState } from 'react';
-import LoadFileButton from '../load-file-button/load-file-button';
+import { FormEvent, useState } from 'react';
+import UploadTextButton from '../upload-text-button/upload-text-button';
 import Player from '../player/player';
 import Textarea from '../textarea/textarea';
 import VoiceSelect from '../voice-select/voice-select';
 import './synthesis.scss';
+import { isInputValid } from './synthesis-utils';
+import { APIRoute, VoiceType } from '../../const';
+import { api } from '../../services/services';
 
 function Synthesis() {
   const [loadedText, setLoadedText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isValid, setIsValid] = useState(true);
-  const [voiceFile, setVoiceFile] = useState('/assets/test.wav');
+  const [voiceFile, setVoiceFile] = useState('');
+  const [fileName, setFileName] = useState('');
+  const [error, setError] = useState<unknown>('');
 
-  const textRef = useRef<HTMLTextAreaElement>(null);
+  const handleSubmit = async (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+    const formData = new FormData(evt.currentTarget);
+    const text = formData.get('text');
+    const voice = formData.get('voice');
+    if (!voice || !text || !isInputValid(text as string)) {
+      setIsValid(false);
+      return;
+    }
+    formData.set('isMale', `${voice === VoiceType.Male}`);
+    formData.delete('voice');
+    const requestData = Object.fromEntries(formData);
+    setIsValid(true);
+    setIsLoading(true);
+    try {
+      const { data } = await api.post(APIRoute.Synthesis, requestData, {
+        responseType: 'blob'
+      });
+      const wavUrl = window.URL.createObjectURL(data);
+      setVoiceFile(wavUrl);
+      setFileName(text as string);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <form className="synthesis">
+    <form className="synthesis" onSubmit={(evt) => handleSubmit(evt)}>
       <div className="synthesis__container">
-        <LoadFileButton isDisabled={isLoading} onFileLoad={setLoadedText} />
+        <UploadTextButton isDisabled={isLoading} onFileLoad={setLoadedText} />
         <VoiceSelect isDisabled={isLoading} />
-        <Textarea fileText={loadedText} isDisabled={isLoading} ref={textRef} />
+        <Textarea fileText={loadedText} isDisabled={isLoading} />
         <button className="synthesis__submit" type="submit">
           Синтез
         </button>
@@ -31,7 +63,7 @@ function Synthesis() {
             !voiceFile ? 'synthesis__download--disabled' : ''
           }`}
           href={voiceFile}
-          download={voiceFile}
+          download={fileName.substring(0, 10)}
         >
           Скачать
           <svg
