@@ -1,4 +1,4 @@
-export const BACKEND_URL = 'http://localhost:8000';
+export const BACKEND_URL = 'https://audio.kalmgu.ru:8084/';
 
 export const REQUEST_TIMEOUT = 5000;
 
