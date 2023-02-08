@@ -30,12 +30,12 @@ function Synthesis() {
     }
     formData.set('isMale', `${voice === VoiceType.Male}`);
     formData.delete('voice');
-    const requestData = Object.fromEntries(formData);
+    const requestPayload = Object.fromEntries(formData);
     setIsValid(true);
     setIsLoading(true);
     setIsSuccessMessage(false);
     try {
-      const { data } = await api.post(APIRoute.Synthesis, requestData, {
+      const { data } = await api.post(APIRoute.Synthesis, requestPayload, {
         responseType: 'blob'
       });
       const wavUrl = window.URL.createObjectURL(data);
