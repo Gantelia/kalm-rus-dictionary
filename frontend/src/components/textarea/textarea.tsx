@@ -4,15 +4,17 @@ import './textarea.scss';
 type TextAreaProps = {
   fileText: string;
   isDisabled: boolean;
+  onInteraction: () => void;
 };
 
-function Textarea({ fileText, isDisabled }: TextAreaProps) {
+function Textarea({ fileText, isDisabled, onInteraction }: TextAreaProps) {
   const [input, setInput] = useState('');
 
   /* Обновляет состояние поля ввода, чтобы <label> не падал на текст,
        если текст загружен из файла */
   useEffect(() => {
     setInput(fileText);
+    onInteraction();
   }, [fileText]);
 
   return (
@@ -25,12 +27,11 @@ function Textarea({ fileText, isDisabled }: TextAreaProps) {
         value={input.substring(0, 500)}
         required
         disabled={isDisabled}
+        onFocus={onInteraction}
       />
       <label
-        /* Доп. класс нужен, чтобы <label> не накладывался на текст,
-           когда поле не пустое */
         className={`label-placeholder textarea-label ${
-          input && 'label-placeholder--offset'
+          input && 'label-placeholder--shift'
         }`}
         htmlFor="text"
       >
@@ -40,7 +41,10 @@ function Textarea({ fileText, isDisabled }: TextAreaProps) {
         <button
           className="textarea__clear"
           type="button"
-          onClick={() => setInput('')}
+          onClick={() => {
+            setInput('');
+            onInteraction();
+          }}
         >
           <span className="visually-hidden">Очистить</span>
         </button>

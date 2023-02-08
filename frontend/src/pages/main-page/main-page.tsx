@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Recognition from '../../components/recognition/recognition';
-import Synthesis from '../../components/synthesis/synthesis';
+import Recognition from '../../components/blocks/recognition/recognition';
+import Synthesis from '../../components/blocks/synthesis/synthesis';
 import TabLabel from '../../components/tab-label/tab-label';
 import { Tabs } from '../../const';
 import './main-page.scss';

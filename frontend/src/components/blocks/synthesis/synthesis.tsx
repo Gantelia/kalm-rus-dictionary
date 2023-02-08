@@ -1,14 +1,14 @@
 import { FormEvent, useState } from 'react';
-import UploadTextButton from '../upload-text-button/upload-text-button';
-import Player from '../player/player';
-import Textarea from '../textarea/textarea';
-import VoiceSelect from '../voice-select/voice-select';
-import './synthesis.scss';
+import UploadTextButton from '../../upload-text-button/upload-text-button';
+import Player from '../../player/player';
+import Textarea from '../../textarea/textarea';
+import VoiceSelect from '../../voice-select/voice-select';
 import { isInputValid } from './synthesis-utils';
-import { APIRoute, SHOW_ERROR_TIMEOUT, VoiceType } from '../../const';
-import { api } from '../../services/services';
-import ErrorMessage from '../error-message/error-message';
-import Loader from '../loader/loader';
+import { APIRoute, SHOW_ERROR_TIMEOUT, VoiceType } from '../../../const';
+import { api } from '../../../services/services';
+import ErrorMessage from '../../error-message/error-message';
+import Loader from '../../loader/loader';
+import './synthesis.scss';
 
 function Synthesis() {
   const [loadedText, setLoadedText] = useState('');
@@ -17,6 +17,7 @@ function Synthesis() {
   const [voiceFile, setVoiceFile] = useState('');
   const [fileName, setFileName] = useState('');
   const [error, setError] = useState<unknown>(null);
+  const [isSuccessMessage, setIsSuccessMessage] = useState(false);
 
   const handleSubmit = async (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -32,6 +33,7 @@ function Synthesis() {
     const requestData = Object.fromEntries(formData);
     setIsValid(true);
     setIsLoading(true);
+    setIsSuccessMessage(false);
     try {
       const { data } = await api.post(APIRoute.Synthesis, requestData, {
         responseType: 'blob'
@@ -39,6 +41,7 @@ function Synthesis() {
       const wavUrl = window.URL.createObjectURL(data);
       setVoiceFile(wavUrl);
       setFileName(text as string);
+      setIsSuccessMessage(true);
     } catch (error) {
       setError(error);
       setTimeout(() => setError(null), SHOW_ERROR_TIMEOUT);
@@ -53,7 +56,11 @@ function Synthesis() {
       <div className="synthesis__container">
         <UploadTextButton isDisabled={isLoading} onFileLoad={setLoadedText} />
         <VoiceSelect isDisabled={isLoading} />
-        <Textarea fileText={loadedText} isDisabled={isLoading} />
+        <Textarea
+          fileText={loadedText}
+          isDisabled={isLoading}
+          onInteraction={() => setIsSuccessMessage(false)}
+        />
         <button
           className="synthesis__submit"
           type="submit"
@@ -61,9 +68,15 @@ function Synthesis() {
         >
           Синтез
         </button>
-        {isLoading ? (
-          <Loader>Подождите, идет синтез</Loader>
-        ) : (
+        {isLoading && <Loader>Подождите, идет синтез</Loader>}
+        {!isLoading && isSuccessMessage && (
+          <p className="tip">
+            Синтез завершен.
+            <br />
+            Файл можно скачать или прослушать
+          </p>
+        )}
+        {!isLoading && !isSuccessMessage && (
           <p className={`tip ${!isValid ? 'tip--error' : ''}`}>
             Допустимы только буквы калмыцкого алфавита и знаки препинания
           </p>

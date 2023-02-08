@@ -1,9 +1,9 @@
 import { FormEvent, useState } from 'react';
-import { APIRoute, SHOW_ERROR_TIMEOUT } from '../../const';
-import { api } from '../../services/services';
-import ErrorMessage from '../error-message/error-message';
-import Loader from '../loader/loader';
-import UploadVoiceButton from '../upload-voice-button/upload-voice-button';
+import { APIRoute, SHOW_ERROR_TIMEOUT } from '../../../const';
+import { api } from '../../../services/services';
+import ErrorMessage from '../../error-message/error-message';
+import Loader from '../../loader/loader';
+import UploadVoiceButton from '../../upload-voice-button/upload-voice-button';
 import './recognition.scss';
 
 function Recognition() {
