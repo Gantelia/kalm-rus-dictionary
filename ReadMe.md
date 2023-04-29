@@ -6,7 +6,7 @@
 
 - Проект создан в образовательных целях по заказу Калмыцкого Государственного Университета им Б.Б.Городовикова
 
-<img src="./frontend/src/images/synthesis.jpg" width="800" height="692" alt="Синтез калмыцкой речи">
+<img src="./frontend/src/images/screenshot.jpg" width="800" height="692" alt="Синтез калмыцкой речи">
 
 ## Функциональность
 
