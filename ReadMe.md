@@ -24,7 +24,7 @@
 Чтобы запустить проект локально, используйте npm (CLI Node.js):
 
 ```
-$ cd ../frontend
+$ cd ./frontend
 $ npm install
 $ npm start
 ```
