@@ -6,7 +6,7 @@
 
 - Проект создан в образовательных целях по заказу Калмыцкого Государственного Университета им Б.Б.Городовикова
 
-<img src="./frontend/src/images/screenshot.jpg" width="800" height="692" alt="Синтез калмыцкой речи">
+<img src="./src/images/screenshot.jpg" alt="Синтез калмыцкой речи">
 
 ## Функциональность
 
@@ -24,7 +24,6 @@
 Чтобы запустить проект локально, используйте npm (CLI Node.js):
 
 ```
-$ cd ./frontend
 $ npm install
 $ npm start
 ```
